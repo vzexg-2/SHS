@@ -50,7 +50,7 @@ Well, hello! my names sunshine lintang juhari, you can call me sunshine, im 12 y
 
 so i create this script because i was inspired by some youtuber especially 'Loi liang yang', so i create this and just for info some function like scan, some parts/code is from chatgpt and some parts/code is from me.
 
-My plan is to build an app called "BIWN_Network", BIWB mean Built In WiFi Network, so my purpose is i want to create the app for detecting all wifi that near the user at, and user can choose the target wifi that user want to attack! don't worry the wordlist file is automatically downloaded and located in /storage/emulated/0
+My plan is to build an app called "BIWN_Network", BIWN mean Built In WiFi Network, so my purpose is i want to create the app for detecting all wifi that near the user at, and user can choose the target wifi that user want to attack! don't worry the wordlist file is automatically downloaded and located in /storage/emulated/0
 
 also i want a drawer that has 2 menu, one is "WiFi Attack", 2 is "Login PAGE", basically the Login PAGE is just a normal wifi login page like the ZTE one.
 
