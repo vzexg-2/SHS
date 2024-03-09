@@ -1,5 +1,5 @@
 
-# Note
+# READ BEFORE CONTINUE!
 recommend using the Python, the nodejs version is not working properly
 
 The nodejs version is unstable.
