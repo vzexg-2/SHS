@@ -119,11 +119,7 @@ def print_menu():
         [usage] Guide command.
         [exit] Exit
         
-        --- SHS WiFi ( Note )---
-
-        SHS is automatically downloading a 2 wordlist.
-        'rockyou.txt' contains 14,341,564 unique passwords.
-        'wifite.txt' contains additional with numeral passwords that mostly used.
+        --- SHS WiFi ---
     """
     print(Fore.GREEN + menu)
 
@@ -138,7 +134,7 @@ def main():
     else:
         while True:
             print_menu()
-            command = input(Fore.CYAN + "Enter command: ").lower()
+            command = input(Fore.CYAN + "SHS > ").lower()
             if command == "scan":
                 scan_wifi()
             elif command.startswith("bruteforce"):
