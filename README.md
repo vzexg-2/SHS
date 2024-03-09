@@ -1,5 +1,7 @@
 
 # Note
+recommend using the python one.
+
 SHS is not fully working and some function may not work properly, if you achieve/got an error with this code.
 
 contact me: sunshinexjuhari@protonmail.com
