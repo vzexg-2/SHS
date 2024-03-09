@@ -1,3 +1,4 @@
+
 const os = require('os');
 const { execSync } = require('child_process');
 const readline = require('readline');
@@ -104,14 +105,16 @@ async function connectWifi(ssid, password) {
 
 function login() {
   clearTerminal();
-  const usn = rl.question("🚀 USN > ");
-  const psw = rl.question("🚀 PSW > ");
-  if (usn === "admin" && psw === "root") {
-    main();
-  } else {
-    console.log("Nice try kid 🚀");
-    process.exit();
-  }
+  rl.question("🚀 USN > ", (usn) => {
+    rl.question("🚀 PSW > ", (psw) => {
+      if (usn === "admin" && psw === "root") {
+        main();
+      } else {
+        console.log("Nice try kid 🚀");
+        process.exit();
+      }
+    });
+  });
 }
 
 function main() {
