@@ -124,7 +124,7 @@ def main():
         
         --- SHS WiFi ---
      """
-     print(Fore.GREEN + menu)
+    print(Fore.GREEN + menu)
     if len(sys.argv) > 1:
         if sys.argv[1].lower() == "bruteforce" and len(sys.argv) > 2:
             ssid = sys.argv[2]
