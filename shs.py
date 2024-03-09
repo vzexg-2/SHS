@@ -105,7 +105,14 @@ def connect_wifi(ssid, password):
         print("Connected to WiFi network:", ssid)
     except Exception as e:
         print("Error connecting to WiFi:", e)
-
+def login():
+   init()
+   os.system('clear')
+   usn = input(str(Fore.YELLOW + "🚀 USN > "))
+   psw = input(str(Fore.YELLOW + "🚀 PSW > "))
+   if usn == "admin" and psw == "root":
+      main()
+      
 def main():
     init()
     download_wordlist()
@@ -150,6 +157,9 @@ def main():
                 [scan] Just like that, no additional comamnds
                 [bruteforce] with target ssid > ( bruteforce targetssid )
                 [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
+
+                make sure to install networkmanager, aircrack-ng, airmon-ng, airdump-ng and pywifi also you cannot use 
+                this script in termux ( even if you're rooted ), if you have a laptop/computer/Chromebook ( ChromeOS ), use that.
                 """
                 print(usage1)
             elif command == "exit":
@@ -158,4 +168,4 @@ def main():
                 print("Invalid command. Please try again.")
 
 if __name__ == "__main__":
-    main()
+    login()
