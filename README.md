@@ -1,6 +1,11 @@
 
 # Note
-recommend using the python one.
+recommend using the Python, the nodejs version is not working properly
+
+The nodejs version is unstable.
+- by not showing the menu 
+- error while reading bruteforce command ( cannot bruteforce the wifi ssid )
+- slow response/respond ( can take more than 20 second after running 1 command, like usage or scan 
 
 SHS is not fully working and some function may not work properly, if you achieve/got an error with this code.
 
