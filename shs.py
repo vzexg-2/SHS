@@ -35,13 +35,13 @@ import subprocess
 import sys
 import platform
 import time
-from colorama import init, Fore
+from colorama import init, Fore, Style
 init()
 os.system('sudo apt-get update')
 os.system('sudo apt-get install pciutils')
 os.system('sudo apt-get install network-manager')
 os.system('sudo pip3 install wash')
-print(Fore.RED + "make sure you have installed aircrack-ng, airodump-ng, airmon-ng and wash.
+print(Fore.RED + Style.BRIGHT + "Make sure you have installed aircrack-ng, setting up airodump-ng, airmon-ng." + Style.RESET_ALL)
 time.sleep(2)
 
 # detect platform
