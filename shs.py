@@ -157,7 +157,7 @@ def main():
                 [bruteforce] with target ssid > ( bruteforce targetssid )
                 [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
                 """
-                print(usage)
+                print(usage1)
             elif command == "exit":
                 break
             else:
