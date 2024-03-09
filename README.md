@@ -22,7 +22,7 @@ Three. **Connecting to WiFi:**
    - Type `bruteforce [SSID]` and hit Enter. Replace `[SSID]` with the name of the WiFi network you need to crack.
 
 Three. **Connecting to WiFi:**
-   - Type `join [SSID]:[password]` and hit Enter. Replace `[SSID]` with the name of the WiFi network you want to hook up with, and `[password]` with the password for that community.
+   - Type `connect [SSID]:[password]` and hit Enter. Replace `[SSID]` with the name of the WiFi network you want to hook up with, and `[password]` with the password for that community.
 
 **A Quick Note:**
 - Make certain your computer or computer is running Linux earlier than you dive into the usage of this script.
