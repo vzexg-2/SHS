@@ -41,8 +41,8 @@ os.system('sudo apt-get update')
 os.system('sudo apt-get install pciutils')
 os.system('sudo apt-get install network-manager')
 os.system('sudo pip3 install wash')
-print(Fore.RED + Style.BRIGHT + "Make sure you have installed aircrack-ng, setting up airodump-ng, airmon-ng." + Style.RESET_ALL)
-time.sleep(2)
+print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
+time.sleep(5.5)
 
 # detect platform
 if platform.system() == 'Windows':
@@ -120,6 +120,7 @@ def connect_wifi(ssid, password):
         print("Connected to WiFi network:", ssid)
     except Exception as e:
         print("Error connecting to WiFi:", e)
+
 def login():
    init()
    os.system('clear')
@@ -128,12 +129,13 @@ def login():
    if usn == "admin" and psw == "root":
       main()
    else:
-      print("Nice try kid 🚀")
+      print(Fore.RED + "Nice try kid 🚀")
       sys.exit()
       
 def main():
     init()
     download_wordlist()
+
     os.system('clear')
     menu = """
         █████████████████
@@ -157,7 +159,7 @@ def main():
             return
     else:
         while True:
-            command = input(Fore.CYAN + "SHS > ").lower()
+            command = input(Fore.CYAN + "Network > ").lower()
             if command == "scan":
                 scan_wifi()
             elif command.startswith("bruteforce"):
