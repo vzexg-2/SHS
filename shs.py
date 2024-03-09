@@ -40,8 +40,9 @@ init()
 os.system('sudo apt-get update')
 os.system('sudo apt-get install pciutils')
 os.system('sudo apt-get install network-manager')
+os.system('sudo apt-get install wireless-tools')
 os.system('sudo pip3 install wash')
-print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
+print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, pciutilis, networkmanager, wireless-tools, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
 time.sleep(5.5)
 
 # detect platform
