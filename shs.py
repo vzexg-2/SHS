@@ -33,7 +33,16 @@ Three. **Connecting to WiFi:**
 import os
 import subprocess
 import sys
+import platform
 from colorama import init, Fore
+os.system('sudo apt-get update')
+os.system('sudo apt-get install pciutils')
+
+# detect platform
+if platform.system() == 'Windows':
+    os.system('cls')
+else:
+    os.system('clear')
 
 def download_wordlist():
     try:
@@ -112,6 +121,9 @@ def login():
    psw = input(str(Fore.YELLOW + "🚀 PSW > "))
    if usn == "admin" and psw == "root":
       main()
+   else:
+      print("Nice try kid 🚀")
+      sys.exit()
       
 def main():
     init()
