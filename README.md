@@ -16,7 +16,7 @@ Hey there! This Python script is like a available Swiss army knife for managing 
 2. **Bruteforcing WiFi:**
    - Okay, so you realize those WiFi networks that have passwords? This function takes a shot at guessing those passwords. It's like trying each key within the international until you discover the one that unlocks the WiFi. It makes use of a few fancy gear known as `airmon-ng`, `wash`, `airodump-ng`, and `aircrack-ng` to do its factor. If it is a hit, it will even spill the beans and let you know the WiFi network's name (SSID) and password.
 
-Three. **Connecting to WiFi:**
+3. **Connecting to WiFi:**
    - Ever desired to leap on a particular WiFi community but didn't have the password? This function lets you do just that! Just supply it the name of the WiFi community (SSID) and the password, and it's going to paintings its magic to get you connected. It makes use of a device called `nmcli` to make the relationship occur.
 
 **How to Use it:**
