@@ -1,6 +1,6 @@
 
 # Note
-SHS is not fully working and some function may not work properly, if you achieve/get an error
+SHS is not fully working and some function may not work properly, if you achieve/got an error with this code.
 
 contact me: sunshinexjuhari@protonmail.com
 
