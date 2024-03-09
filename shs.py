@@ -106,7 +106,10 @@ def connect_wifi(ssid, password):
     except Exception as e:
         print("Error connecting to WiFi:", e)
 
-def print_menu():
+def main():
+    init()
+    download_wordlist()
+    os.system('clear')
     menu = """
         █████████████████
         █─▄▄▄▄█─█─█─▄▄▄▄█
@@ -120,12 +123,8 @@ def print_menu():
         [exit] Exit
         
         --- SHS WiFi ---
-    """
-    print(Fore.GREEN + menu)
-
-def main():
-    init()
-    download_wordlist()
+     """
+     print(Fore.GREEN + menu)
     if len(sys.argv) > 1:
         if sys.argv[1].lower() == "bruteforce" and len(sys.argv) > 2:
             ssid = sys.argv[2]
@@ -133,7 +132,6 @@ def main():
             return
     else:
         while True:
-            print_menu()
             command = input(Fore.CYAN + "SHS > ").lower()
             if command == "scan":
                 scan_wifi()
