@@ -1,4 +1,3 @@
-
 const os = require('os');
 const { execSync } = require('child_process');
 const readline = require('readline');
@@ -123,7 +122,7 @@ function main() {
 
   const menu = `
     █████████████████
-    █─▄▄▄▄█─█─█─▄▄▄▄█
+    █─▄▄▄▄█─█─█─▄▄▄
     █▄▄▄▄─█─▄─█▄▄▄▄─█
     ▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▄▀      
 
@@ -135,7 +134,6 @@ function main() {
 
     --- SHS WiFi ---
   `;
-
   console.log(menu);
 
   if (process.argv.length > 2 && process.argv[2].toLowerCase() === "bruteforce") {
@@ -151,7 +149,12 @@ function main() {
         scanWifi();
         break;
       case "bruteforce":
-        const ssid = input.split(" ")[1];
+        const args = input.split(" ");
+        if (args.length !== 2) {
+          console.log("Invalid 'bruteforce' command format. Please use 'bruteforce <ssid>'.");
+          break;
+        }
+        const ssid = args[1];
         bruteforceWifi(ssid);
         break;
       case "connect":
@@ -175,3 +178,4 @@ function main() {
 }
 
 login();
+
