@@ -11,7 +11,7 @@ SHS is not fully working and some function may not work properly, if you achieve
 
 contact me: sunshinexjuhari@protonmail.com
 
-# BF-WiFi
+# SHS
 
 Hey there! This Python script is like a available Swiss army knife for managing WiFi stuff in your pc or computer, particularly if it's jogging Linux. With this script, you can do things like scanning for close by WiFi networks, seeking to crack passwords (yeah, it is known as bruteforcing), and connecting to WiFi networks.
 
