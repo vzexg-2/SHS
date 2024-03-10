@@ -1,11 +1,11 @@
 
 # READ BEFORE CONTINUE!
-recommend using the Python, the nodejs version is not working properly
+recommend using the Python, the nodejs version is not working properly and the nodejs version is still the old version and not updated cuz i was too lazy to do it. just use the Python. 
 
 The nodejs version is unstable.
 - sometimes not showing the menu 
 - error while reading bruteforce command ( cannot bruteforce the wifi ssid )
-- slow response/respond ( can take more than 20 second after running 1 command, like usage or scan 
+- slow response/respond ( can take more than 20 second after running 1 command, like usage or scan
 
 SHS is not fully working and some function may not work properly, if you achieve/got an error with this code.
 
@@ -42,18 +42,12 @@ Hey there! This Python script is like a available Swiss army knife for managing 
 - Some of the instructions it makes use of, like `sudo` and `nmcli`, might need greater permissions or setup.
 - And recollect, best use this script on WiFi networks you are allowed to debris with. Hacking into someone else's WiFi without permission is a huge no-no!
 
-## Introduction and purpose?
+## Introducing my self!
 
 This script was created by Sunshine
 
 Well, hello! my names sunshine lintang juhari, you can call me sunshine, im 12 years old and i live in Indonesia
 
 so i create this script because i was inspired by some youtuber especially 'Loi liang yang', so i create this and just for info some function like scan, some parts/code is from chatgpt and some parts/code is from me.
-
-My plan is to build an app called "BIWN_Network", BIWN mean Built In WiFi Network, so my purpose is i want to create the app for detecting all wifi that near the user at, and user can choose the target wifi that user want to attack! don't worry the wordlist file is automatically downloaded and located in /storage/emulated/0
-
-also i want a drawer that has 2 menu, one is "WiFi Attack", 2 is "Login PAGE", basically the Login PAGE is just a normal wifi login page like the ZTE one.
-
-it will requires a root btw, but its just my plan, idk if i can make it loll
 
 thats all, bye!
