@@ -101,7 +101,7 @@ def bruteforce_specific_password(ssid, password):
     except Exception as e:
         print("Error bruteforcing WiFi with specific password:", e)
 
-  def scan_wifi():
+def scan_wifi():
     try:
         result = subprocess.run(['sudo', 'iwlist', 'wlan0', 'scan'], capture_output=True, text=True)
         output = result.stdout
