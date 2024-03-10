@@ -29,27 +29,12 @@ Three. **Connecting to WiFi:**
 - And recollect, best use this script on WiFi networks you are allowed to debris with. Hacking into someone else's WiFi without permission is a huge no-no!
 """
 # main
-
 import os
 import subprocess
 import sys
 import platform
 import time
 from colorama import init, Fore, Style
-init()
-os.system('sudo apt-get update')
-os.system('sudo apt-get install pciutils')
-os.system('sudo apt-get install network-manager')
-os.system('sudo apt-get install wireless-tools')
-os.system('sudo pip3 install wash')
-print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, pciutilis, networkmanager, wireless-tools, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
-time.sleep(5.5)
-
-# detect platform
-if platform.system() == 'Windows':
-    os.system('cls')
-else:
-    os.system('clear')
 
 def download_wordlist():
     try:
@@ -74,10 +59,7 @@ def download_wordlist():
 def bruteforce_wifi(ssid):
     try:
         subprocess.run(['sudo', 'airmon-ng', 'start', 'wlan0'])
-        subprocess.run(['sudo', 'airmon-ng', 'start', 'wlan0mon'])
         subprocess.run(['sudo', 'wash', '-i', 'wlan0mon'])
-        subprocess.run(['sudo', 'airmon-ng', 'stop', 'wlan0mon'])
-        subprocess.run(['sudo', 'airmon-ng', 'stop', 'wlan0'])
         subprocess.run(['sudo', 'airodump-ng', '-w', 'output', '--essid', ssid, 'wlan0mon'])
         subprocess.run(['sudo', 'aircrack-ng', '-w', 'rockyou.txt', '-w', 'wifite.txt', '-b', 'BSSID', 'output.cap'])
         print("Bruteforcing WiFi:", ssid)
@@ -123,16 +105,16 @@ def connect_wifi(ssid, password):
         print("Error connecting to WiFi:", e)
 
 def login():
-   init()
-   os.system('clear')
-   usn = input(str(Fore.YELLOW + "🚀 USN > "))
-   psw = input(str(Fore.YELLOW + "🚀 PSW > "))
-   if usn == "admin" and psw == "root":
-      main()
-   else:
-      print(Fore.RED + "Nice try kid 🚀")
-      sys.exit()
-      
+    init()
+    os.system('clear')
+    usn = input(str(Fore.YELLOW + "🚀 USN > "))
+    psw = input(str(Fore.YELLOW + "🚀 PSW > "))
+    if usn == "admin" and psw == "root":
+        main()
+    else:
+        print(Fore.RED + "Nice try kid 🚀")
+        sys.exit()
+
 def main():
     init()
     download_wordlist()
@@ -151,42 +133,36 @@ def main():
         [exit] Exit
         
         --- SHS WiFi ---
-     """
+    """
     print(Fore.GREEN + menu)
-    if len(sys.argv) > 1:
-        if sys.argv[1].lower() == "bruteforce" and len(sys.argv) > 2:
-            ssid = sys.argv[2]
+    while True:
+        command = input(Fore.CYAN + "Network > ").lower()
+        if command == "scan":
+            scan_wifi()
+        elif command.startswith("bruteforce"):
+            ssid = command.split(" ")[1]
             bruteforce_wifi(ssid)
-            return
-    else:
-        while True:
-            command = input(Fore.CYAN + "Network > ").lower()
-            if command == "scan":
-                scan_wifi()
-            elif command.startswith("bruteforce"):
-                ssid = command.split(" ")[1]
-                bruteforce_wifi(ssid)
-            elif command.startswith("connect"):
-                try:
-                    ssid, password = command.split(" ")[1].split(":")
-                    connect_wifi(ssid, password)
-                except Exception as e:
-                    print("Invalid 'connect' command format. Please use 'connect ssid:password'.")
-            elif command == "usage":
-                print("--- Usage ---")
-                usage1="""
-                [scan] Just like that, no additional comamnds
-                [bruteforce] with target ssid > ( bruteforce targetssid )
-                [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
+        elif command.startswith("connect"):
+            try:
+                ssid, password = command.split(" ")[1].split(":")
+                connect_wifi(ssid, password)
+            except Exception as e:
+                print("Invalid 'connect' command format. Please use 'connect ssid:password'.")
+        elif command == "usage":
+            print("--- Usage ---")
+            usage1="""
+            [scan] Just like that, no additional comamnds
+            [bruteforce] with target ssid > ( bruteforce targetssid )
+            [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
 
-                make sure to install networkmanager, aircrack-ng, airmon-ng, airdump-ng and pywifi also you cannot use 
-                this script in termux ( even if you're rooted ), if you have a laptop/computer/Chromebook ( ChromeOS ), use that.
-                """
-                print(usage1)
-            elif command == "exit":
-                break
-            else:
-                print("Invalid command. Please try again.")
+            make sure to install networkmanager, aircrack-ng, airmon-ng, airdump-ng and pywifi also you cannot use 
+            this script in termux ( even if you're rooted ), if you have a laptop/computer/Chromebook ( ChromeOS ), use that.
+            """
+            print(usage1)
+        elif command == "exit":
+            break
+        else:
+            print("Invalid command. Please try again.")
 
 if __name__ == "__main__":
     login()
