@@ -82,7 +82,7 @@ def bruteforce_wifi(ssid):
 
 def scan_wifi():
     try:
-        result = subprocess.run(['sudo', 'iwlist', 'wlan0', 'scan'], capture_output=True, text=True)
+        result = subprocess.run(['sudo', 'iwlist', 'wlan1', 'scan'], capture_output=True, text=True)
         output = result.stdout
         networks = []
         current_network = {}
