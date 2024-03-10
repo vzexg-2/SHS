@@ -35,6 +35,20 @@ import sys
 import platform
 import time
 from colorama import init, Fore, Style
+init()
+os.system('sudo apt-get update')
+os.system('sudo apt-get install pciutils')
+os.system('sudo apt-get install network-manager')
+os.system('sudo apt-get install wireless-tools')
+os.system('sudo pip3 install wash')
+print(Fore.RED + Style.BRIGHT + " [!] Make sure you have installed aircrack-ng, pciutilis, networkmanager, wireless-tools, setting up airodump-ng, airmon-ng. before continue" + Style.RESET_ALL)
+time.sleep(5.5)
+
+# detect platform
+if platform.system() == 'Windows':
+    os.system('cls')
+else:
+    os.system('clear')
 
 def download_wordlist():
     try:
@@ -156,13 +170,16 @@ def main():
             [connect] with ssid and password separated by ':' > ( connect targetssid:password12345 )
 
             make sure to install networkmanager, aircrack-ng, airmon-ng, airdump-ng and pywifi also you cannot use 
-            this script in termux ( even if you're rooted ), if you have a laptop/computer/Chromebook ( ChromeOS ), use that.
+            this script in termux ( even if you're rooted ), if you have a laptop/computer with windows on it, use that.
             """
             print(usage1)
+        elif command == "relog":
+            os.system('clear')
+            login()
         elif command == "exit":
             break
         else:
-            print("Invalid command. Please try again.")
+            print("")
 
 if __name__ == "__main__":
     login()
