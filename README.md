@@ -3,7 +3,7 @@
 recommend using the Python, the nodejs version is not working properly
 
 The nodejs version is unstable.
-- by not showing the menu 
+- sometimes not showing the menu 
 - error while reading bruteforce command ( cannot bruteforce the wifi ssid )
 - slow response/respond ( can take more than 20 second after running 1 command, like usage or scan 
 
