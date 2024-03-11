@@ -29,7 +29,7 @@ Hey there! This Python script is like a available Swiss army knife for managing 
 **How to Use it:**
 
 1. **Scanning WiFi Networks:**
-   - Just kind `test` and hit Enter. It'll exit and discover all the nearby WiFi networks for you.
+   - Just kind `scan` and hit Enter. It'll exit and discover all the nearby WiFi networks for you.
 
 2. **Bruteforcing WiFi:**
    - Type `bruteforce [SSID]` and hit Enter. Replace `[SSID]` with the name of the WiFi network you need to crack.
