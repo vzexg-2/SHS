@@ -1,6 +1,15 @@
 
 # READ BEFORE CONTINUE!
-recommend using the Python, the nodejs version is not working properly and the nodejs version is still the old version and not updated cuz i was too lazy to do it. just use the Python. 
+
+> [!TIP]
+> _Use kali linux or any operating system ( Windows/Linux ), not recommended to use Android, even if you're rooted_
+
+ _If you're an Android user ( some  kids/indian man trying to bruteforce wifi without even trying/knowing all the consequences or not even knowing what is networkmanager, aircrack-ng, airmon-ng and others, i suggest you to go outside and touch some grass, this is illegal, do some better legal activity and don't make other people annoyed because of you)_
+
+_May god forgive you for what you did_, _**!!!EDUCATIONAL PURPOSES ONLY!!!**_
+
+
+Recommend using the Python, the nodejs version is not working properly and the nodejs version is still the old version and not updated cuz i was too lazy to do it. just use the Python. 
 
 The nodejs version is unstable.
 - sometimes not showing the menu 
