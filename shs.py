@@ -1954,8 +1954,7 @@ def main():
         Write.Print("\nPlease install required tools before continuing\n", Colors.red_to_purple, interval=0.0001)
         sys.exit(1)
     
-    n = input(Colorate.Horizontal(Colors.green_to_cyan, "U sure to continue? (enter) "))
-    return n.lower() == "" # simple enter.
+    input(Colorate.Horizontal(Colors.green_to_cyan, "\nU sure to continue? (enter)"))
     
     Write.Print("Starting application\n\n", Colors.green_to_cyan, interval=0.0001)
     time.sleep(5)
