@@ -1046,7 +1046,8 @@ class WPSAttack:
         except Exception:
             pass
         return None
-    
+
+    # i will set it to file instead of this manual placeholder later.
     def bruteforce_pin(self, bssid: str) -> Optional[str]:
         known_pins = [
             '12345670', '00000000', '11111111', '22222222', '33333333',
